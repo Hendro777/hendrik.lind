@@ -2,6 +2,7 @@
     --fira-code: 'Fira Code', sans-serif;
     --montserrat: 'Montserrat', sans-serif;
     --background: #F0F0F4;
+    --accent-color: rgb(99, 94, 154);
 }
 
 *, *::before, *::after {
@@ -23,8 +24,12 @@ h1, h2 {
     margin-top: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
-    width: 80%;
+    width: 90%;
     max-width: 1128px;
     margin: 0 auto;
 }
@@ -38,15 +43,122 @@ h1, h2 {
     width: 100%;
 }
 
+.header__container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-block: .5em;
+}
+
+.nav {
+    background-color: var(--background);
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 1000ms ease-in-out;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.nav-burger,
+.nav-burger::before,
+.nav-burger::after {
+    background-color: #000;
+    width: 2.5em;
+    height: .4em;
+}
+
+.nav-burger {
+    position: relative;
+}
+
+.nav-burger::before {
+    content: "";
+    position: absolute;
+    top: -13px;
+    left: 0;
+}
+
+.nav-burger::after {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: 0;
+}
+
+.nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding-block: 1em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.nav-list li + li {
+    margin-top: 1em;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+.nav-link:active,
+.nav-link:hover {
+    color: var(--accent-color);
+}
+.nav-link.active {
+    color: var(--accent-color);
+}
+
+.nav-toggle:checked ~ .nav {
+    transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ .nav .nav-link {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+.nav-logo {
+    height: 2em;
+    width: 2em;
+    display: grid;
+    place-content: center;
+
+    background: #000;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 900;
+    border-radius: .2em;
+}
+
 .intro {
     height: 100vh;
     width: 100vw;
     padding-block: 3em;
-    display: grid;
-    place-items: center;
 }
 
 .intro__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,7 +200,7 @@ h1, h2 {
 }
 
 .intro__subtitle {
-    color: rgb(99, 94, 154);
+    color: var(--accent-color);
 
     opacity: 0;
     transform: translateY(3rem);
