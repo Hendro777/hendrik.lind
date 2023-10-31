@@ -1,6 +1,7 @@
 :root {
     --fira-code: 'Fira Code', sans-serif;
     --montserrat: 'Montserrat', sans-serif;
+    --background: #F0F0F4;
 }
 
 *, *::before, *::after {
@@ -13,6 +14,7 @@ html {
 
 body {
     margin: 0;
+    background: var(--background);
 }
 
 h1, h2 {
@@ -34,39 +36,61 @@ h1, h2 {
     width: 100%;
 }
 
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes typewriter {
+    to {
+        left: 100%;
+    }
+}
+
 .intro {
     height: 100vh;
     width: 100vw;
+    padding-block: 3em;
+    display: grid;
+    place-items: center;
 }
 
 .intro__container {
     display: flex;
-    height: 100%;
-    align-items: center;
     justify-content: center;
 }
 
 .intro__title {
+    position: relative;
     font-family: var(--fira-code);
-    font-size: 2.25rem;
+    font-size: clamp(2.25rem, 3vw + 1rem, 4.5rem);
     font-weight: 400;
     text-align: center;
+    text-shadow: 1px 1px 3px rgb(150, 131, 233);
+    line-height: 1.1;
 }
 
-@media (min-width: 600px) {
-    html {
-        font-size: 1.125rem;
-    }
+.intro__title::before,
+.intro__title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation: typewriter 2s steps(11) forwards;
 }
 
-@media (min-width: 900px) {
-    html {
-        font-size: 1.25rem;
-    }
+.intro__title::before {
+    background: #F0F0F4;
 }
 
-@media (min-width: 1200px) {
-    html {
-        font-size: 1.375rem;
-    }
+.intro__title::after {
+    width: 0.125em;
+    background: black;
 }
