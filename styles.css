@@ -17,6 +17,9 @@ body {
     margin: 0;
     background: var(--background);
     font-family: var(--montserrat);
+}
+
+p {
     font-size: clamp(1rem, 1vw + .25rem, 1.3125rem);
 }
 
@@ -47,6 +50,7 @@ a {
     position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-block: .5em;
 }
 
@@ -209,6 +213,32 @@ a {
     animation-timing-function: ease;
     animation-fill-mode: forwards;
     animation-delay: 3.5s;
+}
+
+/* Desktop */
+@media (min-width: 750px) {
+    .nav-toggle-label {
+        display: none;
+    }
+
+    .nav {
+        all: unset;
+        position: relative;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: 1.5em;
+        padding-block: 0;
+    }
+
+    .nav-list li + li {
+        margin-top: 0;
+    }
+
+    .nav-link {
+        opacity: 1;
+    }
 }
 
 /* Animations */
