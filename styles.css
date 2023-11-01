@@ -260,6 +260,8 @@ a {
     animation-timing-function: ease;
     animation-fill-mode: forwards;
     animation-delay: 3.5s;
+
+    font-family: var(--fira-code);
 }
 
 /* Desktop */
